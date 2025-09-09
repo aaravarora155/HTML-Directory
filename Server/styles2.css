@@ -1,7 +1,11 @@
-a{
-    color:white;
+h2{
+    font-weight:lighter;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
+}
+a{
+    color:rgba(119, 0, 255, 0.692);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 html{
     background-color:rgb(187, 220, 229);
@@ -14,22 +18,16 @@ h1{
     margin-top: -8px;
     margin-right: -8px;
     margin-left:-8px;
-    text-align:center;
+    text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
 }
-hr{
-    width: 0;
+li{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-#link{
-    background-color: rgba(128, 0, 113, 0.545);
-    padding: 20px;
-    text-align:center;
-    margin-top: -18px;
-    margin-right: -8px;
-    margin-left:-8px;
+img{
+    width: 25%;
+    height: 25%;
 }
-
 header{
     background-color: rgb(75, 171, 78);
     padding: 10px;
@@ -39,12 +37,9 @@ header{
     margin-right: -8px;
     margin-left:-8px;
 }
-#aboutme{
-    padding-left: 5px;
-    padding-right:5px
-    
+#home{
+    color:white;
 }
-.Assignments{
-    padding-left: 10px;
-    padding-right: 10px;
+div{
+    text-align: center;
 }
