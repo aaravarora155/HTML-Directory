@@ -48,3 +48,22 @@ header{
     padding-left: 10px;
     padding-right: 10px;
 }
+footer{
+    position: absolute;
+    bottom: 0px;
+    background-color: rgba(6, 31, 255, 0.827);
+    padding: 15px;
+    align-items:center;
+    padding-top: 15px;
+    text-align:center;
+    margin-right: -80px;
+    margin-left:-8px;
+    right:0px;
+    left:0px
+}
+
+footer>div>a{
+    position: relative;
+    text-align: center;
+    
+}
