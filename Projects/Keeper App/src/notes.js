@@ -1,2 +1,2 @@
-const notes = [];
+let notes = [];
 export default notes;

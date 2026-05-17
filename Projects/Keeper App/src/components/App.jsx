@@ -9,11 +9,18 @@ function App() {
   // 1. Initialize state with your imported notes
   const [notes, setNotes] = useState(initialNotes);
 
-  // 2. This function will be triggered by CreateArea
   function addNote(newNote) {
     setNotes((prevNotes) => {
       // Use the spread operator to add the new note to the existing array
-      return [...prevNotes, { ...newNote, id: prevNotes.length + 1 }];
+      return [...prevNotes, newNote];
+    });
+  }
+
+  function deleteNote(id) {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((noteItem, index) => {
+        return index !== id;
+      });
     });
   }
 
@@ -24,12 +31,14 @@ function App() {
       <CreateArea onAdd={addNote} />
       
       {/* 4. Map over the 'notes' state, not the imported file */}
-      {notes.map((noteItem) => {
+      {notes.map((noteItem, index) => {
         return (
           <Note
-            key={noteItem.id}
+            key={index}
+            id={index}
             title={noteItem.title}
             content={noteItem.content}
+            onDelete={deleteNote}
           />
         );
       })}
