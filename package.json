@@ -33,7 +33,8 @@
   "description": "Hello my name is Aarav, this github repository contains the source code for my website. On the website you are able to find details about my previous programming experience as well as signficant games in python, my largest project of the year in Java, and my ongoing work with HTML, CSS, JavaScript, SQL and more. The website gets frequent updates and I perform quality control checks weekly, however if something seems wrong please contact me through the github repository.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm rebuild bcrypt --build-from-source"
   },
   "type": "module",
   "repository": {
