@@ -41,7 +41,9 @@ app.use((req, res, next) => {
         '/login',
         '/register',
         '/auth/google',
-        '/favicon.ico'
+        '/favicon.ico',
+        '/Download',
+        '/Installers'
     ];
 
     const isPublic = publicPaths.some(p => req.url.startsWith(p)) || req.url === '/';

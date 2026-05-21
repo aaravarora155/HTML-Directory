@@ -1,0 +1,347 @@
+/* --- Simplified Download Instructions Stylesheet --- */
+
+/* Inherits Courier New font and body gradient from master.css */
+
+.download-instructions-container {
+    max-width: 1100px;
+    margin: 40px auto 80px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.spacer {
+    height: 40px;
+}
+
+/* H1 title custom text-shadow */
+#title {
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* --- Two Column Grid for OS Cards --- */
+.installers-twin-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-bottom: 40px;
+}
+
+.os-card {
+    /* Matches contact-card/login-card from master.css */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.os-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Header style within OS Card */
+.os-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 20px;
+}
+
+.os-logo {
+    font-size: 40px;
+    color: white;
+}
+
+.os-header h3 {
+    font-size: 22px;
+    margin: 0 0 4px 0;
+}
+
+.os-meta {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Big Action Download Buttons */
+.main-download-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 20px;
+    /* Matches site button colors exactly */
+    background: linear-gradient(135deg, #ff6b6b, #e44040);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(228, 64, 64, 0.3);
+    box-sizing: border-box;
+    margin: 24px 0 8px 0;
+}
+
+.main-download-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(228, 64, 64, 0.5);
+}
+
+.file-info-label {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 25px;
+    display: block;
+}
+
+/* OS Steps styling */
+.os-steps h4 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #00ffd5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+.custom-step-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.custom-step-list li {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.step-title {
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.custom-step-list p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Monospace command block */
+.inline-code-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+
+.inline-code-box code {
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+
+.copy-icon-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 15px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.copy-icon-btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+/* Step Subtexts */
+.step-subtext {
+    font-size: 13px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin: 10px 0 0 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* Sub lists for VSCode Extensions */
+.sub-list {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+
+.sub-list li {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 6px;
+}
+
+/* External Link Buttons */
+.inline-url-link {
+    color: #00ffd5;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px dashed rgba(0, 255, 213, 0.4);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+}
+
+.inline-url-link:hover {
+    color: white;
+    border-bottom-color: white;
+}
+
+/* --- Running Assignments Card --- */
+.run-assignments-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 45px;
+}
+
+.run-assignments-card h3 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.run-assignments-card h3 i {
+    color: #ee4116;
+}
+
+.horizontal-steps-flow {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.flow-step {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+}
+
+.flow-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #4b51f1;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.flow-content {
+    padding-top: 3px;
+}
+
+.flow-content strong {
+    font-size: 15px;
+    display: block;
+    margin-bottom: 6px;
+    color: #00ffd5;
+}
+
+.flow-content p {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+.final-browser-callout {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0 0 0;
+    background: rgba(0, 255, 170, 0.1);
+    border: 1px solid rgba(0, 255, 170, 0.25);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.accent-link {
+    color: #00ffd5;
+    text-decoration: underline;
+}
+
+.accent-link:hover {
+    color: white;
+}
+
+/* --- Footer Links --- */
+.download-footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.download-footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.download-footer-links a:hover {
+    color: #00ffd5;
+    text-decoration: underline;
+}
+
+/* --- Responsive Media Queries --- */
+
+@media screen and (max-width: 900px) {
+    .installers-twin-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .horizontal-steps-flow {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .flow-step {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 15px;
+    }
+
+    .flow-step:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}

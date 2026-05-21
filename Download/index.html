@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation & Setup | PixelSpot</title>
+  <link rel="stylesheet" href="/master.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://kit.fontawesome.com/9b88aea352.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/jpg" href="/Images/Logo.jpg">
+</head>
+
+<body>
+  <!-- Header Bar matching website pages -->
+  <div>
+    <a style="float: right;" href="/Home"><i class="fa-regular fa-house"></i></a>
+    <h1 id="title">Installation & Setup Guide</h1>
+  </div>
+
+  <div class="spacer" style="height: 10px;"></div>
+
+  <main class="download-instructions-container">
+    
+    <!-- Main Two-Column Installer Grid -->
+    <div class="installers-twin-grid">
+      
+      <!-- Windows Card -->
+      <div class="os-card windows-theme">
+        <div class="os-header">
+          <i class="fa-brands fa-windows os-logo"></i>
+          <div>
+            <h3>Windows Installation</h3>
+            <p class="os-meta">WSL Environment Setup</p>
+          </div>
+        </div>
+
+        <!-- Step-by-Step Instructions for Windows -->
+        <div class="os-steps">
+          <br>
+          <ol class="custom-step-list">
+            <li>
+              <span class="step-title">1. WSL Installation</span>
+              <p>Find <strong>Windows PowerShell</strong> in your Start menu, right-click, and run it as <strong>Administrator</strong>. Paste this command and hit Enter:</p>
+              <div class="inline-code-box">
+                <code>wsl --install</code>
+                <button class="copy-icon-btn" onclick="copyText('wsl --install', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext">Once that's done, restart your computer. Upon restart, you will be prompted to setup an Ubuntu username and password to successfully install WSL.</p>
+              <p class="step-subtext"><em>Note: when you type your password, it will not show up, just make sure you know what you are typing!</em></p>
+              <p class="step-subtext">To confirm it worked, run this command in PowerShell:</p>
+              <div class="inline-code-box">
+                <code>wsl --list --verbose</code>
+                <button class="copy-icon-btn" onclick="copyText('wsl --list --verbose', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+            </li>
+            
+            <li>
+              <span class="step-title">2. Install VSCode & Extensions</span>
+              <p>Download and install VSCode on Windows:</p>
+              <a href="https://code.visualstudio.com/" target="_blank" class="inline-url-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Download VSCode</a>
+              <p class="step-subtext">Install the following extensions inside VSCode:</p>
+              <ul class="sub-list">
+                <li>
+                  <a href="https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko" target="_blank" class="inline-url-link">Motoko language extension</a> (by Dfinity team)
+                </li>
+                <li>
+                  <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" target="_blank" class="inline-url-link">Remote WSL extension</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <span class="step-title">3. Install Homebrew & Node in WSL</span>
+              <p>Search and open <strong>Ubuntu</strong> from the Start menu. Install Homebrew by executing:</p>
+              <div class="inline-code-box">
+                <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                <button class="copy-icon-btn" onclick="copyText('/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext">When prompted, enter your Ubuntu password. The installer will tell you how to add brew to the PATH. Copy those commands and run them one by one in Ubuntu.</p>
+              <p class="step-subtext">Next, install Homebrew dependencies if you have sudo access:</p>
+              <div class="inline-code-box">
+                <code>sudo apt-get install build-essential</code>
+                <button class="copy-icon-btn" onclick="copyText('sudo apt-get install build-essential', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext">Verify brew is installed:</p>
+              <div class="inline-code-box">
+                <code>brew -version</code>
+                <button class="copy-icon-btn" onclick="copyText('brew -version', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext">Install Node using Homebrew:</p>
+              <div class="inline-code-box">
+                <code>brew install node@16</code>
+                <button class="copy-icon-btn" onclick="copyText('brew install node@16', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext">Confirm it works with:</p>
+              <div class="inline-code-box">
+                <code>node -version</code>
+                <button class="copy-icon-btn" onclick="copyText('node -version', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext"><em>Note: If you have another version of node installed, link this version to Homebrew: <code>brew link node@16</code></em></p>
+            </li>
+
+            <li>
+              <span class="step-title">4. Install DFX</span>
+              <p>Open Ubuntu and run this command to install the Dfinity SDK:</p>
+              <div class="inline-code-box">
+                <code>DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"</code>
+                <button class="copy-icon-btn" onclick="copyText('DFX_VERSION=0.9.3 sh -ci &quot;$(curl -fsSL https://sdk.dfinity.org/install.sh)&quot;', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext">After DFX installs, it will print the installation path (e.g., <code>/home/username/bin/dfx</code>). Add it to your PATH (replace the path below with yours):</p>
+              <div class="inline-code-box">
+                <code>export PATH=$PATH:/home/YOUR_USERNAME/bin/dfx</code>
+                <button class="copy-icon-btn" onclick="copyText('export PATH=$PATH:/home/YOUR_USERNAME/bin/dfx', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <p class="step-subtext">Verify that DFX is successfully added:</p>
+              <div class="inline-code-box">
+                <code>dfx --version</code>
+                <button class="copy-icon-btn" onclick="copyText('dfx --version', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- macOS Card -->
+      <div class="os-card macos-theme">
+        <div class="os-header">
+          <i class="fa-brands fa-apple os-logo"></i>
+          <div>
+            <h3>macOS Installation</h3>
+            <p class="os-meta">Native macOS Setup</p>
+          </div>
+        </div>
+
+        <!-- Step-by-Step Instructions for macOS -->
+        <div class="os-steps">
+          <br>
+          <ol class="custom-step-list">
+            <li>
+              <span class="step-title">1. Install Node.js</span>
+              <p>Go to the official Node.js website and download the Long Term Support (LTS) version (left button, typically 16.x.x LTS):</p>
+              <a href="https://nodejs.org/en/" target="_blank" class="inline-url-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Node.js Downloads</a>
+            </li>
+            
+            <li>
+              <span class="step-title">2. Install DFX</span>
+              <p>Open the <strong>Terminal</strong> app (in Applications folder or search via Spotlight). Copy and paste this command, then press Enter:</p>
+              <div class="inline-code-box">
+                <code>DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"</code>
+                <button class="copy-icon-btn" onclick="copyText('DFX_VERSION=0.9.3 sh -ci &quot;$(curl -fsSL https://sdk.dfinity.org/install.sh)&quot;', this)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+            </li>
+            
+            <li>
+              <span class="step-title">3. Install VSCode & Extensions</span>
+              <p>Download and install VSCode for macOS:</p>
+              <a href="https://code.visualstudio.com/" target="_blank" class="inline-url-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Download VSCode</a>
+              <p class="step-subtext">Open VSCode and install the Motoko language extension by the Dfinity team:</p>
+              <a href="https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko" target="_blank" class="inline-url-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Motoko Extension Link</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Running the Dbank/Web3 assignments guide -->
+    <div class="run-assignments-card">
+      <h3><i class="fa-solid fa-terminal"></i> How to run your Web3 projects (DFX):</h3>
+      <div class="horizontal-steps-flow">
+        
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-content">
+            <strong>Start Local Replica</strong>
+            <p>Start the local Internet Computer blockchain network:</p>
+            <div class="inline-code-box">
+              <code>dfx start</code>
+              <button class="copy-icon-btn" onclick="copyText('dfx start', this)"><i class="fa-regular fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-content">
+            <strong>Deploy Canisters</strong>
+            <p>Compile and deploy the smart contract backend and assets:</p>
+            <div class="inline-code-box">
+              <code>dfx deploy</code>
+              <button class="copy-icon-btn" onclick="copyText('dfx deploy', this)"><i class="fa-regular fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-content">
+            <strong>Run Frontend Dev Server</strong>
+            <p>Run the frontend hot-reloading development server:</p>
+            <div class="inline-code-box">
+              <code>npm run start</code>
+              <button class="copy-icon-btn" onclick="copyText('npm run start', this)"><i class="fa-regular fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer links -->
+    <div class="download-footer-links">
+      <a href="/Contact"><i class="fa-regular fa-envelope"></i> Facing issues? Contact support</a>
+    </div>
+
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    // Copy utility function
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check" style="color: #00ffd5;"></i>';
+        btn.style.borderColor = '#00ffd5';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.borderColor = '';
+        }, 1500);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+  </script>
+</body>
+
+</html>
