@@ -4,7 +4,7 @@ const path = require('path');
 
 const router = express.Router();
 const PORT = 3000;
-const FLASK_URL = 'http://localhost:5000';
+const FLASK_URL = 'http://trotty-inexpressively-rosette.ngrok-free.dev';
 
 // Parse incoming JSON bodies
 app.use(express.json());
