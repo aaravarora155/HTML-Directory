@@ -31,9 +31,4 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`\n🚀 FRC Manual Interpreter UI running at http://localhost:${PORT}`);
-  console.log(`   Proxying /api/query → ${FLASK_URL}/api/query\n`);
-});
-
 export default app;
