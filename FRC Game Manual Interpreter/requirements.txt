@@ -1,0 +1,12 @@
+click
+pdfminer.six
+camelot-py[cv]
+flask
+flask-cors
+torch
+ollama
+chromadb
+langchain-text-splitters
+langchain-huggingface
+huggingface_hub
+sentence-transformers

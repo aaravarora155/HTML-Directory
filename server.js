@@ -74,6 +74,8 @@ const projects = [
     { path: '/30-Blog-API/', folder: './Projects/Blog API Project/index.js' },
     { path: '/31-Permalist-Project/', folder: './Projects/Permalist Project/index.js' },
     { path: '/32-Book-Notes-Project/', folder: './Projects/Book Notes Project/index.js' },
+
+    { path: '/frc-interpreter/', folder: './FRC Game Manual Interpreter/server.js'},
     
     { path: '/contact/', folder: './Contact/contactBackend.js'},
     { path: '/', folder: './login.js'}

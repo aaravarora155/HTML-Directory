@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRC Game Manual Interpreter</title>
+  <meta name="description"
+    content="Ask questions about the FRC Game Manual and get accurate, rule-based answers powered by AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ── Header ────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <span class="logo-gear">⚙</span>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">FRC AI</h1>
+          <p class="brand-sub">Game Manual Interpreter</p>
+        </div>
+      </div>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span>AI Powered</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ──────────────────────────────────────────────────────── -->
+  <main class="main-container">
+
+    <!-- Chat Window -->
+    <section class="chat-window" id="chatWindow" aria-live="polite">
+      <!-- Welcome Message -->
+      <div class="message message--ai welcome-message" id="welcomeMsg">
+        <div class="message-avatar">🤖</div>
+        <div class="message-body">
+          <p class="message-text">
+            Hello! I'm your <strong>FRC Game Manual</strong> expert. Ask me anything about the rules, scoring, robot
+            requirements, field specifications, or any other game details for the latest season.
+          </p>
+          <div class="suggestion-chips">
+            <button class="chip" onclick="fillQuestion('What are the rules for robot weight limits?')">Robot weight
+              limits</button>
+            <button class="chip" onclick="fillQuestion('How is scoring calculated?')">Scoring rules</button>
+            <button class="chip" onclick="fillQuestion('What are the bumper requirements?')">Bumper
+              requirements</button>
+            <button class="chip" onclick="fillQuestion('What happens during autonomous period?')">Autonomous
+              period</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Input Bar -->
+    <div class="input-bar-wrapper">
+      <form class="input-bar" id="queryForm" autocomplete="off">
+        <textarea id="questionInput" class="input-field"
+          placeholder="Ask a question about the most recent FRC Game Manual or Team Updates..." rows="1"
+          aria-label="Question input" maxlength="1000"></textarea>
+        <button type="submit" class="send-btn" id="sendBtn" aria-label="Send question">
+          <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
