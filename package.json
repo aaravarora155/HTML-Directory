@@ -9,6 +9,7 @@
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-session": "^1.17.3",
+    "googleapis": "^173.0.0",
     "http-proxy-middleware": "^4.2.0",
     "inquirer": "^13.1.0",
     "nodemailer": "^7.0.9",
