@@ -1,23 +1,24 @@
 import express from "express";
-import nodemailer from "nodemailer";
 import { google } from "googleapis";
 import dotenv from "dotenv";
 
 dotenv.config();
 const router = express.Router();
 
-// Initialize the OAuth2 client using Google Cloud Credentials
+// Initialize the Google OAuth2 client using the keys you saved
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
     process.env.GMAIL_CLIENT_ID,
     process.env.GMAIL_CLIENT_SECRET,
-    "https://developers.google.com/oauthplayground" // Standard redirect URI used for generating tokens
+    "https://developers.google.com/oauthplayground"
 );
 
-// Set the permanent refresh token so the app can automatically refresh its access
 oauth2Client.setCredentials({
     refresh_token: process.env.GMAIL_REFRESH_TOKEN,
 });
+
+// Bind the authenticated client directly to the Gmail REST Service
+const gmail = google.gmail({ version: "v1", auth: oauth2Client });
 
 function generateSubject() {
     const ticketNum = Math.ceil(Math.random() * 1000000);
@@ -33,27 +34,7 @@ router.post("/send-email", async (req, res) => {
     }
 
     try {
-        // 1. Get a fresh, temporary Access Token from Google
-        const accessTokenResponse = await oauth2Client.getAccessToken();
-        const accessToken = accessTokenResponse.token;
-
-        if (!accessToken) {
-            throw new Error("Failed to generate Google API access token.");
-        }
-
-        // 2. Configure Nodemailer to pass authentication through the Gmail API instead of SMTP ports
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                type: "OAuth2",
-                user: "helpdesk.directory@gmail.com", // Your Gmail account
-                clientId: process.env.GMAIL_CLIENT_ID,
-                clientSecret: process.env.GMAIL_CLIENT_SECRET,
-                refreshToken: process.env.GMAIL_REFRESH_TOKEN,
-                accessToken: accessToken,
-            },
-        });
-
+        const subject = generateSubject();
         const preparedStatement = `
         <p>Hello ${name},</p>
         <p>We received a request from your email: <strong>${email}</strong></p>
@@ -64,18 +45,39 @@ router.post("/send-email", async (req, res) => {
         The Support Team</p>
         `;
 
-        // 3. Deliver the email via the secure API tunnel
-        await transporter.sendMail({
-            from: `"Pixel Spot Support" <helpdesk.directory@gmail.com>`,
-            to: email, // Sends confirmation to the user who filled out the form
-            bcc: "helpdesk.directory@gmail.com", // Hidden copy sent back to your inbox
-            subject: generateSubject(),
-            html: preparedStatement,
+        // Build a raw RFC 2822 compliant email string manually to bypass SMTP layout requirements
+        const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
+        const messageParts = [
+            `From: "Pixel Spot Support" <helpdesk.directory@gmail.com>`,
+            `To: ${email}`,
+            `Bcc: helpdesk.directory@gmail.com`,
+            `Subject: ${utf8Subject}`,
+            'MIME-Version: 1.0',
+            'Content-Type: text/html; charset=utf-8',
+            'Content-Transfer-Encoding: 7bit',
+            '',
+            preparedStatement
+        ];
+        const message = messageParts.join('\n');
+
+        // Encode the string safely into a URL-safe Base64 payload
+        const encodedMessage = Buffer.from(message)
+            .toString('base64')
+            .replace(/\+/g, '-')
+            .replace(/\//g, '_')
+            .replace(/=+$/, '');
+
+        // Make an HTTPS POST request straight over standard web routes (Port 443)
+        await gmail.users.messages.send({
+            userId: 'me',
+            requestBody: {
+                raw: encodedMessage,
+            },
         });
 
-        res.json({ success: true, message: "Email sent successfully via Gmail API" });
+        res.json({ success: true, message: "Email sent successfully via secure HTTP API!" });
     } catch (err) {
-        console.error("Error sending email via Gmail API:", err);
+        console.error("Error sending email via Gmail REST API:", err);
         res.status(500).json({ success: false, message: "Failed to send email" });
     }
 });
